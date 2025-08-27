@@ -1,0 +1,186 @@
+/* styles.css — Cricket Scoreboard Assignment
+   Responsive, clean UI with hover/focus states. No external libraries. */
+
+:root{
+  --bg: #0b1020;
+  --card: #121935;
+  --muted: #93a1c6;
+  --text: #f3f5ff;
+  --accent: #7dd3fc; /* cyan-300 */
+  --accent-2: #a78bfa; /* violet-400 */
+  --danger: #ef4444;
+  --success: #34d399;
+  --ring: rgba(125,211,252,.45);
+}
+
+*{ box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: radial-gradient(1200px 600px at 10% 10%, #10173a 0%, #090d1e 55%, #070a15 100%) fixed, var(--bg);
+  color: var(--text);
+}
+
+.site-header, .site-footer{
+  padding: 1rem 1.25rem;
+  text-align: center;
+  background: linear-gradient(90deg, rgba(125,211,252,.08), rgba(167,139,250,.08));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.course-meta{
+  display:flex;
+  flex-wrap: wrap;
+  gap:.75rem 1rem;
+  justify-content: center;
+  color: var(--muted);
+  font-size:.95rem;
+}
+
+.container{
+  max-width: 1080px;
+  margin: 1rem auto 2rem;
+  padding: 0 1rem;
+}
+
+.score-cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:1rem;
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius: 1.25rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.card h2{
+  margin:0 0 .5rem;
+  font-weight: 700;
+  letter-spacing:.3px;
+}
+
+.big-number{
+  font-size: clamp(2rem, 4vw + .5rem, 3.5rem);
+  font-weight: 800;
+  letter-spacing:.5px;
+}
+
+.subtext, .status{
+  color: var(--muted);
+  margin-top:.25rem;
+}
+
+.player.striker, .player:has(.strike-flag:not([hidden])){
+  outline: 2px solid var(--accent);
+  box-shadow: 0 0 0 6px var(--ring);
+}
+
+.strike-flag{
+  color: var(--accent);
+  font-weight: 900;
+  margin-left:.25rem;
+}
+
+.state-row{
+  margin: 1rem 0 .5rem;
+  min-height: 2.25rem;
+  display:flex;
+  align-items: center;
+}
+
+.state-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.35rem .75rem;
+  border-radius:999px;
+  background: linear-gradient(90deg, rgba(52,211,153,.15), rgba(125,211,252,.18));
+  border:1px solid rgba(255,255,255,.12);
+  font-weight: 700;
+}
+
+.controls{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.controls .group{
+  background: rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius: 1rem;
+  padding: .75rem;
+}
+
+.controls .group h3{
+  margin:.25rem .25rem .75rem;
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.group.utility{
+  grid-column: span 2;
+}
+
+.btn{
+  appearance: none;
+  background: linear-gradient(180deg, rgba(125,211,252,.15), rgba(167,139,250,.15));
+  border:1px solid rgba(255,255,255,.18);
+  border-radius: .9rem;
+  color: var(--text);
+  padding: .75rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+  margin:.35rem;
+  min-width: 90px;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.35);
+}
+
+.btn:focus-visible{
+  outline: 2px solid var(--accent);
+  box-shadow: 0 0 0 6px var(--ring);
+}
+
+.btn.danger{
+  background: linear-gradient(180deg, rgba(239,68,68,.18), rgba(239,68,68,.12));
+  border-color: rgba(239,68,68,.55);
+}
+
+.btn.ghost{
+  background: transparent;
+  border-style:dashed;
+}
+
+.messages{
+  margin-top: .75rem;
+  min-height: 1.5rem;
+  color: var(--success);
+  font-weight: 700;
+}
+
+@media (max-width: 900px){
+  .score-cards{ grid-template-columns: 1fr; }
+  .controls{ grid-template-columns: 1fr; }
+  .group.utility{ grid-column: span 1; }
+}
+
+/* Subtle animations */
+@media (prefers-reduced-motion: no-preference){
+  .btn:hover{ transform: translateY(-1px) scale(1.02); }
+}

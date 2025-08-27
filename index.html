@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cricket Scoreboard — Assignment 1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Cricket Scoreboard</h1>
+    <p class="course-meta">
+      
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="scoreboard">
+      <div class="score-cards">
+        <article class="card team">
+          <h2>Team</h2>
+          <div class="big-number" id="team-score">0/0</div>
+          <div class="subtext">
+            <span id="overs">0.0 Overs</span>
+          </div>
+        </article>
+
+        <article class="card player" id="rahul-card" aria-live="polite">
+          <h2>Rahul <span id="rahul-strike" class="strike-flag" aria-label="striker" title="Striker" hidden>*</span></h2>
+          <div class="big-number" id="rahul-runs">0</div>
+          <div class="status" id="rahul-status">On field</div>
+        </article>
+
+        <article class="card player" id="rohit-card" aria-live="polite">
+          <h2>Rohit <span id="rohit-strike" class="strike-flag" aria-label="striker" title="Striker" hidden>*</span></h2>
+          <div class="big-number" id="rohit-runs">0</div>
+          <div class="status" id="rohit-status">On field</div>
+        </article>
+      </div>
+
+      <div class="state-row">
+        <div class="state-pill" id="free-hit-pill" title="Next valid delivery is a Free Hit" hidden>FREE HIT (next ball)</div>
+      </div>
+
+      <div class="controls">
+        <div class="group">
+          <h3>Runs</h3>
+          <button class="btn" data-run="1">+1</button>
+          <button class="btn" data-run="2">+2</button>
+          <button class="btn" data-run="3">+3</button>
+          <button class="btn" data-run="4">FOUR</button>
+          <button class="btn" data-run="6">SIX</button>
+        </div>
+
+        <div class="group">
+          <h3>Dismissals</h3>
+          <button class="btn danger" id="wicket-btn">Wicket</button>
+          <button class="btn danger" id="lbw-btn">LBW</button>
+        </div>
+
+        <div class="group">
+          <h3>Extras</h3>
+          <button class="btn" id="wide-btn">Wide</button>
+          <button class="btn" id="noball-btn">No Ball</button>
+          <button class="btn" id="freehit-btn">Free Hit</button>
+          <button class="btn" id="bye-btn">Bye</button>
+          <button class="btn" id="legbye-btn">Leg Bye</button>
+        </div>
+
+        <div class="group utility">
+          <h3>Utility</h3>
+          <button class="btn" id="switch-btn">Switch Striker</button>
+          <button class="btn ghost" id="reset-btn">Reset</button>
+        </div>
+      </div>
+
+      <div class="messages" id="messages" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small></small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
